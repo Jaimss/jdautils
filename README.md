@@ -1,2 +1,3 @@
 # jdautils
-Kotlin Utilities Package for JDA
+
+Updated README, docs, and Wiki coming soon. [discord](https://discord.jaims.dev) for information and questions.
