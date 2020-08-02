@@ -23,6 +23,22 @@ fun MessageChannel.send(message: String, color: Color = Color.WHITE): MessageAct
 }
 
 /**
+ * Send a message using an embed builder
+ *
+ * @param message the message to send
+ * @return a [MessageAction]
+ */
+fun MessageChannel.send(message: MessageEmbed): MessageAction = sendMessage(message)
+
+/**
+ * Send a message using a messagebuilder
+ *
+ * @param message the message to send
+ * @return a [MessageAction]
+ */
+fun MessageChannel.send(message: Message): MessageAction = sendMessage(message)
+
+/**
  * Cleanup a message action. A good way to delete the message after you use [send].
  *
  * @param delay the delay before deleting
@@ -36,10 +52,10 @@ fun MessageAction.cleanup(delay: Long = 3): RestAction<Void> {
 /**
  * Turn a hex color code into a [Color]
  *
- * @return a [Color] or [Color.BLACK] if you don't provide a proper hex code
+ * @return a [Color] or null if you don't provide a proper hex code
  */
-fun String.toColor(): Color {
-    if (!this.matches("[#][0-9a-fA-F]{6}".toRegex())) return Color.BLACK
+fun String.toColor(): Color? {
+    if (!this.matches("[#][0-9a-fA-F]{6}".toRegex())) return null
     val digits: String = this.substring(1, this.length.coerceAtMost(7))
     val hxstr = "0x$digits"
     return Color.decode(hxstr)
@@ -52,7 +68,7 @@ fun String.toColor(): Color {
  * @param response should the bot post a response in that channel saying it deleted a message
  * @param responseColor the color for the bot response if there is one
  */
-fun MessageChannel.purgeMessages(limit: Int = 25000, response: Boolean = true, responseColor: Color = Color.GREEN) {
+fun MessageChannel.purge(limit: Int = 25000, response: Boolean = true, responseColor: Color = Color.GREEN) {
     val act = this.iterableHistory
     val list = act.takeWhileAsync(limit) { !it.isPinned }
 
