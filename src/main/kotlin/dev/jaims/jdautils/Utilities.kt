@@ -1,11 +1,33 @@
 package dev.jaims.jdautils
 
 import net.dv8tion.jda.api.EmbedBuilder
+import net.dv8tion.jda.api.MessageBuilder
 import net.dv8tion.jda.api.entities.*
 import net.dv8tion.jda.api.requests.RestAction
 import net.dv8tion.jda.api.requests.restaction.MessageAction
 import java.awt.Color
 import java.time.Duration
+
+/**
+ * Send a message
+ *
+ * @param message the message to send
+ * @sample message MessageBuilder().build()
+ * @return a [MessageAction]
+ */
+inline fun MessageChannel.send(message: () -> Message) = sendMessage(message())
+
+fun someMethod(channel: MessageChannel) {
+    channel.send {
+        MessageBuilder()
+            .setContent("Hello This is content!")
+            .setEmbed(
+                EmbedBuilder()
+                    .setDescription("This is an embed")
+                    .build()
+            ).build()
+    }.queue()
+}
 
 /**
  * Easy way to let your bot send an embedded message.
@@ -28,6 +50,7 @@ fun MessageChannel.send(message: String, color: Color = Color.WHITE): MessageAct
  * @param message the message to send
  * @return a [MessageAction]
  */
+@Deprecated("Use", ReplaceWith("MessageChannel#send(() -> Message)"))
 fun MessageChannel.send(message: MessageEmbed): MessageAction = sendMessage(message)
 
 /**
@@ -36,6 +59,7 @@ fun MessageChannel.send(message: MessageEmbed): MessageAction = sendMessage(mess
  * @param message the message to send
  * @return a [MessageAction]
  */
+@Deprecated("Use", ReplaceWith("MessageChannel#send(() -> Message)"))
 fun MessageChannel.send(message: Message): MessageAction = sendMessage(message)
 
 /**
