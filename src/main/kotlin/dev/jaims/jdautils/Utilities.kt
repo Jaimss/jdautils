@@ -7,6 +7,8 @@ import net.dv8tion.jda.api.requests.RestAction
 import net.dv8tion.jda.api.requests.restaction.MessageAction
 import java.awt.Color
 import java.time.Duration
+import javax.xml.bind.JAXBElement
+import kotlin.concurrent.thread
 
 /**
  * Send a message
@@ -16,18 +18,6 @@ import java.time.Duration
  * @return a [MessageAction]
  */
 inline fun MessageChannel.send(message: () -> Message) = sendMessage(message())
-
-fun someMethod(channel: MessageChannel) {
-    channel.send {
-        MessageBuilder()
-            .setContent("Hello This is content!")
-            .setEmbed(
-                EmbedBuilder()
-                    .setDescription("This is an embed")
-                    .build()
-            ).build()
-    }.queue()
-}
 
 /**
  * Easy way to let your bot send an embedded message.
@@ -50,7 +40,7 @@ fun MessageChannel.send(message: String, color: Color = Color.WHITE): MessageAct
  * @param message the message to send
  * @return a [MessageAction]
  */
-@Deprecated("Use", ReplaceWith("MessageChannel#send(() -> Message)"))
+@Deprecated("Use new method.", ReplaceWith("MessageChannel#send(() -> Message)"))
 fun MessageChannel.send(message: MessageEmbed): MessageAction = sendMessage(message)
 
 /**
@@ -59,7 +49,7 @@ fun MessageChannel.send(message: MessageEmbed): MessageAction = sendMessage(mess
  * @param message the message to send
  * @return a [MessageAction]
  */
-@Deprecated("Use", ReplaceWith("MessageChannel#send(() -> Message)"))
+@Deprecated("Use new method", ReplaceWith("MessageChannel#send(() -> Message)"))
 fun MessageChannel.send(message: Message): MessageAction = sendMessage(message)
 
 /**
@@ -93,6 +83,7 @@ fun String.toColor(): Color? {
  * @param responseColor the color for the bot response if there is one
  */
 fun MessageChannel.purge(limit: Int = 25000, response: Boolean = true, responseColor: Color = Color.GREEN) {
+    if (limit > 25000) error("Limit too high! Please stay below 25000.")
     val act = this.iterableHistory
     val list = act.takeWhileAsync(limit) { !it.isPinned }
 
