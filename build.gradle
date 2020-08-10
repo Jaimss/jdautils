@@ -22,11 +22,6 @@ dokkaHtml {
     outputDirectory = "$projectDir/docs"
 }
 
-/*dokka {
-    outputFormat = 'jekyll'
-    outputDirectory = "$projectDir/docs"
-}*/
-
 publishing {
     publications {
         mavenJava(MavenPublication) {
