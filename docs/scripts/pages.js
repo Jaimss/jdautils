@@ -1,3 +1,0 @@
-var pages = [{'name': 'fun MessageChannel.purge(limit: Int, response: Boolean, responseColor: Color)', 'index': '0', 'description':'dev.jaims.jdautils.purge', 'location':'jdautils/dev.jaims.jdautils/purge.html', 'searchKey':'purge'},
-{'name': 'fun String.toColor(): Color?', 'index': '1', 'description':'dev.jaims.jdautils.toColor', 'location':'jdautils/dev.jaims.jdautils/to-color.html', 'searchKey':'toColor'},
-{'name': 'fun MessageAction.cleanup(delay: Long): RestAction<Void>', 'index': '2', 'description':'dev.jaims.jdautils.cleanup', 'location':'jdautils/dev.jaims.jdautils/cleanup.html', 'searchKey':'cleanup'}]
