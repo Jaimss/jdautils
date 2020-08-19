@@ -1,11 +1,21 @@
 package dev.jaims.jdautils.common
 
-import net.dv8tion.jda.api.EmbedBuilder
+import dev.jaims.jdautils.common.message.createEmbed
+import dev.jaims.jdautils.common.message.createMessage
 import net.dv8tion.jda.api.entities.*
 import net.dv8tion.jda.api.requests.RestAction
 import net.dv8tion.jda.api.requests.restaction.MessageAction
 import java.awt.Color
 import java.time.Duration
+
+/**
+ * Turn a [MessageEmbed] into a [Message]
+ */
+fun MessageEmbed.asMessage(): Message {
+    return createMessage {
+        embed = this@asMessage
+    }
+}
 
 /**
  * Send a message
@@ -23,13 +33,13 @@ inline fun MessageChannel.send(message: () -> Message) = sendMessage(message())
  * @param color the color of the embed or white
  * @return a [MessageAction]
  */
-fun MessageChannel.send(message: String, color: Color = Color.WHITE): MessageAction {
-    return sendMessage(
-        EmbedBuilder()
-            .setDescription(message)
-            .setColor(color).build()
-    )
-}
+fun MessageChannel.send(message: String, color: Color = Color.WHITE): MessageAction =
+    send {
+        createEmbed {
+            description = message
+            this.color = color
+        }.asMessage()
+    }
 
 /**
  * Send a message using an embed builder
