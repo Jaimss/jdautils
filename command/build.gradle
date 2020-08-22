@@ -1,4 +1,0 @@
-dependencies {
-    compileOnly 'com.jagrosh:jda-utilities:3.0.4'
-    implementation project(":common")
-}
