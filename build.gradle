@@ -25,22 +25,11 @@ allprojects {
         compileOnly 'net.dv8tion:JDA:4.2.0_172'
     }
 
-    publishing {
-        publications {
-            mavenJava(MavenPublication) {
-                from components.java
-            }
-        }
-        repositories {
-            mavenLocal()
-        }
-    }
-
 }
 
-//dokkaHtmlCollector {
-//    outputDirectory = "$projectDir/docs"
-//}
+dokkaHtmlCollector {
+    outputDirectory = "$projectDir/docs"
+}
 
 def ver = '1.1.0'
 
@@ -50,6 +39,27 @@ version ver
 subprojects {
     group 'dev.jaims.jdautils'
     version ver
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+            }
+        }
+        repositories {
+            mavenLocal()
+            maven {
+                def releasesRepoUrl = "https://repo.jaims.dev/repository/maven-releases/"
+                def snapshotsRepoUrl = "https://repo.jaims.dev/repository/maven-snapshots/"
+                url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+
+                credentials {
+                    username = project.property('sonatype.user')
+                    password = project.property('sonatype.password')
+                }
+            }
+        }
+    }
 }
 
 compileKotlin {
