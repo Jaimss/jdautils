@@ -1,6 +1,5 @@
 rootProject.name = 'jdautils'
 include(
-        'common',
-        'command'
+        'common'
 )
 
