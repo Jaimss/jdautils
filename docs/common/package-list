@@ -1,0 +1,6 @@
+$dokka.format:html
+$dokka.linkExtension:html
+
+dev.jaims.jdautils.common
+dev.jaims.jdautils.common.message
+
