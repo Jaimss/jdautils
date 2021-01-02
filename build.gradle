@@ -1,34 +1,40 @@
 plugins {
     id 'maven-publish'
-    id 'org.jetbrains.kotlin.jvm' version '1.4.0'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.21'
     id 'com.github.johnrengelman.shadow' version '6.0.0'
-    id 'org.jetbrains.dokka' version '1.4.0-rc'
+    id 'org.jetbrains.dokka' version '1.4.20'
 }
 
-allprojects {
-    apply plugin: 'org.jetbrains.dokka'
-    apply plugin: 'maven-publish'
-    apply plugin: 'org.jetbrains.kotlin.jvm'
-    apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'org.jetbrains.dokka'
+apply plugin: 'maven-publish'
+apply plugin: 'org.jetbrains.kotlin.jvm'
+apply plugin: 'com.github.johnrengelman.shadow'
 
-    shadowJar {
-        archiveClassifier.set("")
-    }
-
-    repositories {
-        mavenCentral()
-        jcenter()
-    }
-
-    dependencies {
-        compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-        compileOnly 'net.dv8tion:JDA:4.2.0_172'
-    }
-
+shadowJar {
+    archiveClassifier.set("")
 }
 
-dokkaHtmlCollector {
-    outputDirectory = "$projectDir/docs"
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compileOnly "net.dv8tion:JDA:4.2.0_172"
+
+    testCompile "dev.jaims:kda"
+    testCompile "net.dv8tion:JDA:4.2.0_172"
+}
+
+dokkaHtml {
+    outputDirectory.set(file("$projectDir/docs"))
+    moduleName.set("jcore-api")
+    dokkaSourceSets {
+        configureEach {
+            samples.from(file("$projectDir/src/test/kotlin"))
+        }
+    }
 }
 
 def ver = '1.1.0'
@@ -36,27 +42,22 @@ def ver = '1.1.0'
 group 'dev.jaims'
 version ver
 
-subprojects {
-    group 'dev.jaims.jdautils'
-    version ver
-
-    publishing {
-        publications {
-            mavenJava(MavenPublication) {
-                from components.java
-            }
+publishing {
+    publications {
+        mavenKt(MavenPublication) {
+            from components.java
         }
-        repositories {
-            mavenLocal()
-            maven {
-                def releasesRepoUrl = "https://repo.jaims.dev/repository/maven-releases/"
-                def snapshotsRepoUrl = "https://repo.jaims.dev/repository/maven-snapshots/"
-                url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+    }
+    repositories {
+        mavenLocal()
+        maven {
+            def releasesRepoUrl = "https://repo.jaims.dev/repository/maven-releases/"
+            def snapshotsRepoUrl = "https://repo.jaims.dev/repository/maven-snapshots/"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
 
-                credentials {
-                    username = project.property('sonatype.user')
-                    password = project.property('sonatype.password')
-                }
+            credentials {
+                username = project.property('sonatype.user')
+                password = project.property('sonatype.password')
             }
         }
     }
