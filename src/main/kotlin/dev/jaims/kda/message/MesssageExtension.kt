@@ -9,5 +9,7 @@ import net.dv8tion.jda.api.entities.Message
  * @param properties the properties for the message to have.
  *
  * @return the final [Message]
+ *
+ * @sample dev.jaims.kda.test.messageExample
  */
 fun buildMessage(properties: MessageBuilder.() -> MessageBuilder): Message = properties(MessageBuilder()).build()

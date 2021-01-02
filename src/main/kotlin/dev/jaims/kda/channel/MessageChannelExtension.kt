@@ -13,6 +13,8 @@ import net.dv8tion.jda.api.requests.restaction.MessageAction
  * @param message the message to send
  *
  * @return a [MessageAction]
+ *
+ * @sample dev.jaims.kda.test.messageChannelExample
  */
 fun MessageChannel.send(message: Message): MessageAction = sendMessage(message)
 
@@ -22,6 +24,8 @@ fun MessageChannel.send(message: Message): MessageAction = sendMessage(message)
  * @param content the message to send
  *
  * @return a [MessageAction]
+ *
+ * @sample dev.jaims.kda.test.messageChannelExample
  */
 fun MessageChannel.send(content: String): MessageAction = sendMessage(content)
 
@@ -31,6 +35,8 @@ fun MessageChannel.send(content: String): MessageAction = sendMessage(content)
  * @param embed the embed to send
  *
  * @return a [MessageAction]
+ *
+ * @sample dev.jaims.kda.test.messageChannelExample
  */
 fun MessageChannel.send(embed: MessageEmbed): MessageAction = sendMessage(embed)
 
@@ -42,6 +48,8 @@ fun MessageChannel.send(embed: MessageEmbed): MessageAction = sendMessage(embed)
  * @param predicate the requirement to be met for the message purge. Defaults to not purging pinned messages.
  *
  * @return the [MessageChannel] that has messages purged.
+ *
+ * @sample dev.jaims.kda.test.messageChannelExample
  */
 fun MessageChannel.purge(limit: Int = 25000, predicate: (Message) -> Boolean = { !it.isPinned }): MessageChannel {
     if (limit > 25000) error("Limit too high! Please keep it below 25,000.")

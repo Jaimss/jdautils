@@ -1,0 +1,116 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>send</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../";</script>
+<script src="https://unpkg.com/kotlin-playground@1" data-selector="code.runnablesample"></script>    <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+    <link href="../../styles/style.css" rel="Stylesheet">
+    <link href="../../styles/logo-styles.css" rel="Stylesheet">
+    <link href="../../styles/jetbrains-mono.css" rel="Stylesheet">
+    <link href="../../styles/main.css" rel="Stylesheet">
+    <script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
+    <script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+    <script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+    <script type="text/javascript" src="../../scripts/main.js" async="async"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn">
+        <div id="logo"></div>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+        <script type="text/javascript" src="../../scripts/pages.js"></script>
+        <script type="text/javascript" src="../../scripts/main.js"></script>
+        <div class="main-content" id="content" pageIds="dev.jaims.kda.channel//send/net.dv8tion.jda.api.entities.MessageChannel#net.dv8tion.jda.api.entities.Message/PointingToDeclaration//-1482221891">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../index.html">kda</a>/<a href="index.html">dev.jaims.kda.channel</a>/<a href="send.html">send</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>send</span></h1>
+          </div>
+<div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="net.dv8tion.jda.api.entities/MessageChannel///PointingToDeclaration/">MessageChannel</span>.<a href="send.html">send</a>(message: <span data-unresolved-link="net.dv8tion.jda.api.entities/Message///PointingToDeclaration/">Message</span>): <span data-unresolved-link="net.dv8tion.jda.api.requests.restaction/MessageAction///PointingToDeclaration/">MessageAction</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<p class="paragraph">Send a <span data-unresolved-link="net.dv8tion.jda.api.entities/Message///PointingToDeclaration/">Message</span>.</p><h4 class="">Return</h4><p class="paragraph">a <span data-unresolved-link="net.dv8tion.jda.api.requests.restaction/MessageAction///PointingToDeclaration/">MessageAction</span></p><h2 class="">Samples</h2><div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Samples"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="sample-container"><code class="runnablesample monospace" theme="idea"><pre>import dev.jaims.kda.channel.purge
+import dev.jaims.kda.channel.send
+import dev.jaims.kda.message.buildEmbed
+import dev.jaims.kda.message.cleanup
+import net.dv8tion.jda.api.entities.MessageChannel
+import net.dv8tion.jda.api.entities.TextChannel
+import net.dv8tion.jda.api.entities.User
+fun main() { 
+   //sampleStart 
+   // send a message and clean it up
+channel.send(buildEmbed { setDescription(&quot;This is my embed!&quot;) }).cleanup().queue()
+
+// send a message
+textChannel.send(&quot;This is an example!&quot;).queue()
+
+// purge a channel with a custom predicate
+textChannel.purge { it.author != someUser &amp;&amp; !it.isPinned } 
+   //sampleEnd
+}</pre></code></div></div></div><h2 class="">Parameters</h2><div data-togglable="Parameters"><div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">message</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">the message to send</p></div></div></div></div></div></div></div></div></div></div></div>
+<div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="net.dv8tion.jda.api.entities/MessageChannel///PointingToDeclaration/">MessageChannel</span>.<a href="send.html">send</a>(content: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>): <span data-unresolved-link="net.dv8tion.jda.api.requests.restaction/MessageAction///PointingToDeclaration/">MessageAction</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<p class="paragraph">Send a <span data-unresolved-link="net.dv8tion.jda.api.entities/Message///PointingToDeclaration/">Message</span> as just a string in the <span data-unresolved-link="net.dv8tion.jda.api.entities/MessageChannel///PointingToDeclaration/">MessageChannel</span>. No fancy embed or anything else.</p><h4 class="">Return</h4><p class="paragraph">a <span data-unresolved-link="net.dv8tion.jda.api.requests.restaction/MessageAction///PointingToDeclaration/">MessageAction</span></p><h2 class="">Samples</h2><div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Samples"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="sample-container"><code class="runnablesample monospace" theme="idea"><pre>import dev.jaims.kda.channel.purge
+import dev.jaims.kda.channel.send
+import dev.jaims.kda.message.buildEmbed
+import dev.jaims.kda.message.cleanup
+import net.dv8tion.jda.api.entities.MessageChannel
+import net.dv8tion.jda.api.entities.TextChannel
+import net.dv8tion.jda.api.entities.User
+fun main() { 
+   //sampleStart 
+   // send a message and clean it up
+channel.send(buildEmbed { setDescription(&quot;This is my embed!&quot;) }).cleanup().queue()
+
+// send a message
+textChannel.send(&quot;This is an example!&quot;).queue()
+
+// purge a channel with a custom predicate
+textChannel.purge { it.author != someUser &amp;&amp; !it.isPinned } 
+   //sampleEnd
+}</pre></code></div></div></div><h2 class="">Parameters</h2><div data-togglable="Parameters"><div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">content</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">the message to send</p></div></div></div></div></div></div></div></div></div></div></div>
+<div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="net.dv8tion.jda.api.entities/MessageChannel///PointingToDeclaration/">MessageChannel</span>.<a href="send.html">send</a>(embed: <span data-unresolved-link="net.dv8tion.jda.api.entities/MessageEmbed///PointingToDeclaration/">MessageEmbed</span>): <span data-unresolved-link="net.dv8tion.jda.api.requests.restaction/MessageAction///PointingToDeclaration/">MessageAction</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<p class="paragraph">Send a <span data-unresolved-link="net.dv8tion.jda.api.entities/Message///PointingToDeclaration/">Message</span> to a channel with only a <span data-unresolved-link="net.dv8tion.jda.api.entities/MessageEmbed///PointingToDeclaration/">MessageEmbed</span></p><h4 class="">Return</h4><p class="paragraph">a <span data-unresolved-link="net.dv8tion.jda.api.requests.restaction/MessageAction///PointingToDeclaration/">MessageAction</span></p><h2 class="">Samples</h2><div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Samples"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="sample-container"><code class="runnablesample monospace" theme="idea"><pre>import dev.jaims.kda.channel.purge
+import dev.jaims.kda.channel.send
+import dev.jaims.kda.message.buildEmbed
+import dev.jaims.kda.message.cleanup
+import net.dv8tion.jda.api.entities.MessageChannel
+import net.dv8tion.jda.api.entities.TextChannel
+import net.dv8tion.jda.api.entities.User
+fun main() { 
+   //sampleStart 
+   // send a message and clean it up
+channel.send(buildEmbed { setDescription(&quot;This is my embed!&quot;) }).cleanup().queue()
+
+// send a message
+textChannel.send(&quot;This is an example!&quot;).queue()
+
+// purge a channel with a custom predicate
+textChannel.purge { it.author != someUser &amp;&amp; !it.isPinned } 
+   //sampleEnd
+}</pre></code></div></div></div><h2 class="">Parameters</h2><div data-togglable="Parameters"><div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">embed</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">the embed to send</p></div></div></div></div></div></div></div></div></div></div></div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2020 Copyright</span><span class="pull-right"><span>Sponsored and developed by dokka</span><a href="https://github.com/Kotlin/dokka"><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

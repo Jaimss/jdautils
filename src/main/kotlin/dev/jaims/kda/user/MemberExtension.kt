@@ -10,6 +10,8 @@ import net.dv8tion.jda.api.entities.Role
  *
  * @param id the id of the role to check
  * @return true if they have it, false if not
+ *
+ * @sample dev.jaims.kda.test.memberExample
  */
 fun Member.hasRole(id: Long): Boolean {
     var b = false
@@ -24,6 +26,8 @@ fun Member.hasRole(id: Long): Boolean {
  *
  * @param role the role to check
  * @return true if they have it, false if not
+ *
+ * @sample dev.jaims.kda.test.memberExample
  */
 fun Member.hasRole(role: Role): Boolean = hasRole(role.idLong)
 
@@ -32,6 +36,8 @@ fun Member.hasRole(role: Role): Boolean = hasRole(role.idLong)
  *
  * @param ids the list of role ids
  * @return true if they have at least one role, false if they don't have any of the roles
+ *
+ * @sample dev.jaims.kda.test.memberExample
  */
 fun Member.hasRole(ids: List<Long>): Boolean {
     var b = false

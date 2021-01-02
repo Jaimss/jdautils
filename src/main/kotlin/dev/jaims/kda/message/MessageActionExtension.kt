@@ -12,5 +12,7 @@ import java.time.Duration
  * @param delay the delay in seconds before deleting
  *
  * @return a [RestAction]
+ *
+ * @sample dev.jaims.kda.test.messageActionExample
  */
 fun MessageAction.cleanup(delay: Long = 3): RestAction<Void> = delay(Duration.ofSeconds(delay)).flatMap { it.delete() }

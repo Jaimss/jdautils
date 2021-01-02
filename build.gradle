@@ -29,7 +29,6 @@ dependencies {
 
 dokkaHtml {
     outputDirectory.set(file("$projectDir/docs"))
-    moduleName.set("jcore-api")
     dokkaSourceSets {
         configureEach {
             samples.from(file("$projectDir/src/test/kotlin"))
